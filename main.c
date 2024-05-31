@@ -23,7 +23,6 @@ int main(int argc, const char** argv) {
     struct edge* edges;
 
     char buf[1000];
-    double true_integral_value = 23. / 45.;
     double calculated_integral_value;
 
     if (argc < 2) {
@@ -52,7 +51,7 @@ int main(int argc, const char** argv) {
             return -1;
         }
 
-        fp = fopen("output.txt", "w");
+        fp = fopen("grid.txt", "w");
         if(!fp) {
             printf("Error open file\n");
             return -1;
@@ -78,7 +77,7 @@ int main(int argc, const char** argv) {
     }
     else if (strcmp(argv[1], "calculate") == 0) {
         { // initialization
-        fp = fopen("output.txt", "r");
+        fp = fopen("grid.txt", "r");
         if(!fp) {
             printf("Error open file\n");
             return -1;
@@ -102,11 +101,7 @@ int main(int argc, const char** argv) {
         }
 
         calculated_integral_value = calc_integral(triangles, points, N);
-        printf("Real integral: %e\nOur integral:  %e\nDelta:         %e\nlog_N(Delta):  %e", 
-               true_integral_value,
-               calculated_integral_value,
-               fabs(true_integral_value - calculated_integral_value),
-               log(fabs(true_integral_value - calculated_integral_value)) / log(N));
+        printf("Integral:  %e\n", calculated_integral_value);
 
         fclose(fp);
         free(points);
