@@ -8,4 +8,4 @@ fancy_output.o: fancy_output.c fancy_output.h
 	gcc -g -Wall -Wextra -Werror -pedantic -std=c99 -c fancy_output.c
 
 clean:
-	rm -f *.o 2D_integral_solver.out grid.txt
+	rm -f *.o 2D_integral_solver grid.txt
